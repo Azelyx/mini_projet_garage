@@ -36,9 +36,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/marques', marqueRouter);
-app.use('/voitures', voitureRouter);
-app.use('/garages', garageRouter);
+app.use('/marque', marqueRouter);
+app.use('/voiture', voitureRouter);
+app.use('/garage', garageRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

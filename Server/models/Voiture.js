@@ -11,6 +11,13 @@ var Voiture = {
             callback
         );
     },
+    getVoitureByGarageId: function(id, callback) {
+        return db.query(
+            'select * from Voiture, Marque where idGarage=? and Voiture.idMarque = Marque.idMarque',
+            [id],
+            callback
+        );
+    },
     addVoiture: function(Voiture, callback) {
         return db.query(
             'Insert into Voiture(idGarage, idMarque, couleur, plaque, model) values(?, ?, ?, ?, ?)',

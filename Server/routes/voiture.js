@@ -21,6 +21,15 @@ router.get('/:id?', function(req, res, next) {
         });
     }
 });
+router.get('/garage/:id?', function(req, res, next) {
+    Voiture.getVoitureByGarageId(req.params.id, function(err, rows) {
+        if (err) {
+            res.json(err);
+        } else {
+            res.json(rows);
+        }
+    });
+});
 router.post('/', function(req, res, next) {
     Voiture.addVoiture(req.body, function(err, count) {
         if (err) {
