@@ -1,1 +1,11 @@
-<div *ngFor="let garage of garages ; let i = index">{{garage.nomGarage}}</div>
+<div *ngIf="garage">
+  <h1>{{garage.nomGarage}}</h1>
+  <button (click)="goBack()">go back</button>
+  <p>Voitures : </p>
+  <div *ngIf="voitures">
+    <ul>
+      <li *ngFor="let voiture of voitures">{{voiture.nomMarque}} {{voiture.model}} - {{voiture.couleur}} -
+        {{voiture.plaque}}</li>
+    </ul>
+  </div>
+</div>

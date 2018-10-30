@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let garage of garages">
+    <p>{{garage.nomGarage}}</p><button routerLink="/garage/{{garage.idGarage}}">Voir</button>
+  </li>
+</ul>

@@ -12,25 +12,25 @@ export class GarageService {
 
   // API: GET /garages
   public getAllGarages() {
-    return this.http.get(API_URL + '/garages');
+    return this.http.get(API_URL + '/garage');
   }
 
-  // API: POST /garages
+  // API: POST /garage
   public createGarage(body) {
-    return this.http.post(API_URL + '/garages', body);
+    return this.http.post(API_URL + '/garage', body);
   }
 
-  // API: GET /garages/:id
+  // API: GET /garage/:id
   public getGarageById(garageId: number) {
-    return this.http.get(API_URL + '/garages/' + garageId);
+    return this.http.get(API_URL + '/garage/' + garageId);
   }
 
-  // API: PUT /garages/:id
+  // API: PUT /garage/:id
   public updateGarage(id, body) {
     return this.http.put(API_URL + '/garage/' + id, body);
   }
 
-  // DELETE /garages/:id
+  // DELETE /garage/:id
   public deleteGarageById(garageId: number) {
     return this.http.delete(API_URL + '/garage/' + garageId);
   }

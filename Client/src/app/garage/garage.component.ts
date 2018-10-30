@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GarageService } from '../services/garage.service';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { VoitureService } from '../services/voiture.service';
 
 @Component({
   selector: 'app-garage',
@@ -7,16 +10,41 @@ import { GarageService } from '../services/garage.service';
   styleUrls: ['./garage.component.css'],
 })
 export class GarageComponent implements OnInit {
-  garages;
+  garage;
+  voitures;
 
-  constructor(private garageService: GarageService) {
+  constructor(
+    private garageService: GarageService,
+    private voituresService: VoitureService,
+    private route: ActivatedRoute,
+    private location: Location
+  ) {
     garageService = garageService;
   }
 
   ngOnInit() {
-    this.garageService.getAllGarages().subscribe(res => {
+    this.getGarageById();
+    this.getVoitureByGarageId();
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+  getGarageById() {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.garageService.getGarageById(id).subscribe(res => {
       res = res.json();
-      this.garages = res;
+      this.garage = res[0];
+    });
+  }
+
+  getVoitureByGarageId() {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.voituresService.getVoitureByGarageId(id).subscribe(res => {
+      res = res.json();
+      console.log(res);
+      this.voitures = res;
     });
   }
 }
