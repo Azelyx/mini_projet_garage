@@ -36,6 +36,7 @@ export class GarageComponent implements OnInit {
     this.garageService.getGarageById(id).subscribe(res => {
       res = res.json();
       this.garage = res[0];
+      console.log('garage', this.garage);
     });
   }
 
@@ -43,8 +44,8 @@ export class GarageComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.voituresService.getVoitureByGarageId(id).subscribe(res => {
       res = res.json();
-      console.log(res);
       this.voitures = res;
+      console.log('voitures', this.voitures);
     });
   }
 }

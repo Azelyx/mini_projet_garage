@@ -2,31 +2,36 @@ var db = require('../dbconnection');
 
 var Voiture = {
     getAllVoitures: function(callback) {
-        return db.query('Select * from Voiture', callback);
+        return db.query(
+            'Select idGarage, Marque.idMarque, Marque.nomMarque, couleur, plaque, model, Date_Format(dateImmat,"%d-%m-%Y") as dateImmat, km  from Voiture, Marque where Voiture.idMarque = Marque.idMarque',
+            callback
+        );
     },
     getVoitureById: function(id, callback) {
         return db.query(
-            'select * from Voiture where idVoiture=?',
+            'select idGarage, Marque.idMarque, Marque.nomMarque, couleur, plaque, model, Date_Format(dateImmat,"%d-%m-%Y") as dateImmat, km from Voiture, Marque where Voiture.idMarque = Marque.idMarque where idVoiture=?',
             [id],
             callback
         );
     },
     getVoitureByGarageId: function(id, callback) {
         return db.query(
-            'select * from Voiture, Marque where idGarage=? and Voiture.idMarque = Marque.idMarque',
+            'select idGarage, Marque.idMarque, Marque.nomMarque, couleur, plaque, model, Date_Format(dateImmat,"%d-%m-%Y") as dateImmat, km from Voiture, Marque where idGarage=? and Voiture.idMarque = Marque.idMarque',
             [id],
             callback
         );
     },
     addVoiture: function(Voiture, callback) {
         return db.query(
-            'Insert into Voiture(idGarage, idMarque, couleur, plaque, model) values(?, ?, ?, ?, ?)',
+            'Insert into Voiture(idGarage, idMarque, couleur, plaque, model, dateImmat, km) values(?, ?, ?, ?, ?)',
             [
                 Voiture.idGarage,
                 Voiture.idMarque,
                 Voiture.couleur,
                 Voiture.plaque,
                 Voiture.model,
+                Voiture.dateImmat,
+                Voiture.km,
             ],
             callback
         );
@@ -40,13 +45,15 @@ var Voiture = {
     },
     updateVoiture: function(id, Voiture, callback) {
         return db.query(
-            'update Voiture set idGarage=?, idMarque=?, couleur=?, plaque=?, model=? where idVoiture=?',
+            'update Voiture set idGarage=?, idMarque=?, couleur=?, plaque=?, model=?, dateImmat=?, km=? where idVoiture=?',
             [
                 Voiture.idGarage,
                 Voiture.idMarque,
                 Voiture.couleur,
                 Voiture.plaque,
                 Voiture.model,
+                Voiture.dateImmat,
+                Voiture.km,
                 id,
             ],
             callback
