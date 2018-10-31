@@ -15,6 +15,10 @@ export class VoitureService {
     return this.http.get(API_URL + '/voiture');
   }
 
+  public getAllwithoutGarage() {
+    return this.http.get(API_URL + '/voiture/noGarage/');
+  }
+
   // API: POST /voiture
   public createVoiture(body) {
     return this.http.post(API_URL + '/voiture', body);

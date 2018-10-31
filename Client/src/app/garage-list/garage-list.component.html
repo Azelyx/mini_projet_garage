@@ -2,4 +2,7 @@
   <li *ngFor="let garage of garages">
     <p>{{garage.nomGarage}}</p><button routerLink="/garage/{{garage.idGarage}}">Voir</button>
   </li>
+  <li *ngIf="voitures">
+    <p>Voitures sans garage</p><button routerLink="/garage/noGarage">Voir</button>
+  </li>
 </ul>

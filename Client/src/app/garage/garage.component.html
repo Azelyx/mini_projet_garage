@@ -1,6 +1,6 @@
 <div *ngIf="garage">
   <h1>{{garage.nomGarage}}</h1>
-  <p>
+  <p *ngIf="garage.adresseGarage">
     Adress : {{garage.adresseGarage}}, {{garage.cpGarage}}, {{garage.villeGarage}}
   </p>
   <p *ngIf="garage.telGarage">

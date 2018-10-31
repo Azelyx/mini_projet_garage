@@ -4,13 +4,23 @@ var Voiture = require('../models/Voiture');
 
 router.get('/:id?', function(req, res, next) {
     if (req.params.id) {
-        Voiture.getVoitureById(req.params.id, function(err, rows) {
-            if (err) {
-                res.json(err);
-            } else {
-                res.json(rows);
-            }
-        });
+        if (req.params.id !== 'noGarage') {
+            Voiture.getVoitureById(req.params.id, function(err, rows) {
+                if (err) {
+                    res.json(err);
+                } else {
+                    res.json(rows);
+                }
+            });
+        } else {
+            Voiture.getAllwithoutGarage(function(err, rows) {
+                if (err) {
+                    res.json(err);
+                } else {
+                    res.json(rows);
+                }
+            });
+        }
     } else {
         Voiture.getAllVoitures(function(err, rows) {
             if (err) {

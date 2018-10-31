@@ -7,6 +7,12 @@ var Voiture = {
             callback
         );
     },
+    getAllwithoutGarage: function(callback) {
+        return db.query(
+            'Select Marque.idMarque, Marque.nomMarque, couleur, plaque, model, Date_Format(dateImmat,"%d-%m-%Y") as dateImmat, km  from Voiture, Marque where Voiture.idMarque = Marque.idMarque and idGarage IS NULL',
+            callback
+        );
+    },
     getVoitureById: function(id, callback) {
         return db.query(
             'select idGarage, Marque.idMarque, Marque.nomMarque, couleur, plaque, model, Date_Format(dateImmat,"%d-%m-%Y") as dateImmat, km from Voiture, Marque where Voiture.idMarque = Marque.idMarque where idVoiture=?',

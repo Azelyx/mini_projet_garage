@@ -33,19 +33,28 @@ export class GarageComponent implements OnInit {
 
   getGarageById() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.garageService.getGarageById(id).subscribe(res => {
-      res = res.json();
-      this.garage = res[0];
-      console.log('garage', this.garage);
-    });
+    if (this.route.snapshot.paramMap.get('id') !== 'noGarage')
+      this.garageService.getGarageById(id).subscribe(res => {
+        res = res.json();
+        this.garage = res[0];
+        console.log('garage', this.garage);
+      });
+    else this.garage = { nomGarage: 'Voitures sans garage' };
   }
 
   getVoitureByGarageId() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.voituresService.getVoitureByGarageId(id).subscribe(res => {
-      res = res.json();
-      this.voitures = res;
-      console.log('voitures', this.voitures);
-    });
+    if (this.route.snapshot.paramMap.get('id') !== 'noGarage')
+      this.voituresService.getVoitureByGarageId(id).subscribe(res => {
+        res = res.json();
+        this.voitures = res;
+        console.log('voitures', this.voitures);
+      });
+    else
+      this.voituresService.getAllwithoutGarage().subscribe(res => {
+        res = res.json();
+        this.voitures = res;
+        console.log('voitures', this.garage);
+      });
   }
 }
