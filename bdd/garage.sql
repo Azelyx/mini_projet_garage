@@ -117,7 +117,7 @@ INSERT INTO `voiture` (`idVoiture`, `idGarage`, `idMarque`, `couleur`, `plaque`,
 -- Contraintes pour la table `voiture`
 --
 ALTER TABLE `voiture`
-  ADD CONSTRAINT `fk_foreign_key_garage` FOREIGN KEY (`idGarage`) REFERENCES `garage` (`idGarage`),
+  ADD CONSTRAINT `fk_foreign_key_garage` FOREIGN KEY (`idGarage`) REFERENCES `garage` (`idGarage`) ON DELETE SET NULL,
   ADD CONSTRAINT `fk_foreign_key_marque` FOREIGN KEY (`idMarque`) REFERENCES `marque` (`idMarque`);
 COMMIT;
 
