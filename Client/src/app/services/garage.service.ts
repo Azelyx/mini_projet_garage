@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Http } from '@angular/http';
+import { Garage } from '../garage';
 
 const API_URL = environment.apiUrl;
 
@@ -16,8 +17,8 @@ export class GarageService {
   }
 
   // API: POST /garage
-  public createGarage(body) {
-    return this.http.post(API_URL + '/garage', body);
+  public createGarage(garage: Garage) {
+    return this.http.post(API_URL + '/garage', garage);
   }
 
   // API: GET /garage/:id
@@ -26,8 +27,8 @@ export class GarageService {
   }
 
   // API: PUT /garage/:id
-  public updateGarage(id, body) {
-    return this.http.put(API_URL + '/garage/' + id, body);
+  public updateGarage(garage: Garage) {
+    return this.http.put(API_URL + '/garage/' + garage.idGarage, garage);
   }
 
   // DELETE /garage/:id

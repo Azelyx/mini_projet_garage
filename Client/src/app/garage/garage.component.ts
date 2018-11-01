@@ -13,8 +13,10 @@ import { Voiture } from '../Voiture';
 })
 export class GarageComponent implements OnInit {
   garage: Garage;
+  newGarage: Garage;
   voitures: [Voiture];
   selectedVoiture: Voiture;
+  showEditGarage = false;
 
   constructor(
     private garageService: GarageService,
@@ -35,6 +37,16 @@ export class GarageComponent implements OnInit {
     this.location.back();
   }
 
+  showEditGarageClick() {
+    this.showEditGarage = !this.showEditGarage;
+  }
+  EditGarage() {
+    this.garageService.updateGarage(this.newGarage).subscribe(res => {
+      console.log('EditGarage', res.json());
+      if (res.json().affectedRows === 1) this.ngOnInit();
+    });
+  }
+
   suppGarage(): void {
     this.garageService.deleteGarageById(this.garage.idGarage).subscribe(res => {
       console.log('supp', res.json());
@@ -52,6 +64,7 @@ export class GarageComponent implements OnInit {
       this.garageService.getGarageById(id).subscribe(res => {
         res = res.json();
         this.garage = res[0];
+        this.newGarage = { ...this.garage };
         console.log('garage', this.garage);
       });
   }
