@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GarageService } from '../services/garage.service';
 import { VoitureService } from '../services/voiture.service';
+import { Garage } from '../garage';
+import { Voiture } from '../Voiture';
 
 @Component({
   selector: 'app-garage-list',
@@ -8,8 +10,8 @@ import { VoitureService } from '../services/voiture.service';
   styleUrls: ['./garage-list.component.css'],
 })
 export class GarageListComponent implements OnInit {
-  garages;
-  voitures;
+  garages: [Garage];
+  voitures: [Voiture];
 
   constructor(
     private garageService: GarageService,
@@ -21,8 +23,7 @@ export class GarageListComponent implements OnInit {
 
   ngOnInit() {
     this.garageService.getAllGarages().subscribe(res => {
-      res = res.json();
-      this.garages = res;
+      this.garages = res.json();
     });
     this.voitureService.getAllwithoutGarage().subscribe(res => {
       console.log(res.json());

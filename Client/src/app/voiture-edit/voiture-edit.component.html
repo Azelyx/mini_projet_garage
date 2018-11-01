@@ -1,0 +1,29 @@
+<div *ngIf="voiture">
+
+	<h2>{{voiture.nomMarque}} {{voiture.model}} - {{voiture.plaque}} :</h2>
+
+	<form (ngSubmit)="onSubmit()">
+		<div class="form-group">
+			<label for="Garage">Garage</label>
+			<select [(ngModel)]="voiture.idGarage" class="form-control" name="Garage" id="Garage" required>
+				<option *ngFor="let garage of garages" [ngValue]="garage.idGarage">{{garage.nomGarage }}</option>
+				<option value="null">Aucun</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="Couleur">Couleur</label>
+			<input [(ngModel)]="voiture.couleur" type="text" class="form-control" name="Couleur" id="Couleur" required>
+		</div>
+		<div class="form-group">
+			<label for="Km">Km</label>
+			<input [(ngModel)]="voiture.km" type="number" class="form-control" name="Km" id="Km" required>
+		</div>
+		<div class="form-group">
+			<label for="Prix">Prix</label>
+			<input [(ngModel)]="voiture.prix" type="number" class="form-control" name="Prix" id="Prix" required>
+		</div>
+		<button type="submit">Valider</button>
+	</form>
+	<button (click)="delete()">Supprimer</button>
+
+</div>

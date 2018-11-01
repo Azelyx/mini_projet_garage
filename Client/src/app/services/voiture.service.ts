@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Http } from '@angular/http';
+import { Voiture } from '../voiture';
 
 const API_URL = environment.apiUrl;
 
@@ -20,8 +21,8 @@ export class VoitureService {
   }
 
   // API: POST /voiture
-  public createVoiture(body) {
-    return this.http.post(API_URL + '/voiture', body);
+  public createVoiture(voiture: Voiture) {
+    return this.http.post(API_URL + '/voiture', voiture);
   }
 
   // API: GET /voiture/garage/:id
@@ -35,8 +36,8 @@ export class VoitureService {
   }
 
   // API: PUT /voiture/:id
-  public updateVoiture(id, body) {
-    return this.http.put(API_URL + '/voiture/' + id, body);
+  public updateVoiture(voiture: Voiture) {
+    return this.http.put(API_URL + '/voiture/' + voiture.idVoiture, voiture);
   }
 
   // DELETE /voiture/:id

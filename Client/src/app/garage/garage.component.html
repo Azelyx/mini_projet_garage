@@ -1,21 +1,28 @@
 <div *ngIf="garage">
-  <h1>{{garage.nomGarage}}</h1>
-  <p *ngIf="garage.adresseGarage">
-    Adress : {{garage.adresseGarage}}, {{garage.cpGarage}}, {{garage.villeGarage}}
-  </p>
-  <p *ngIf="garage.telGarage">
-    tel : {{garage.telGarage}}
-  </p>
-  <p *ngIf="garage.mailGarage">
-    mail : {{garage.mailGarage}}
-  </p>
-  <button (click)="goBack()">go back</button>
-  <p>Voitures : </p>
-  <div *ngIf="voitures">
-    <ul>
-      <li *ngFor="let voiture of voitures">{{voiture.nomMarque}} {{voiture.model}} - {{voiture.couleur}} -
-        {{voiture.dateImmat}} -
-        {{voiture.plaque}} - {{voiture.km}} Km</li>
-    </ul>
-  </div>
+	<h1>{{garage.nomGarage}}</h1>
+	<p *ngIf="garage.adresseGarage">
+		Adress : {{garage.adresseGarage}}, {{garage.cpGarage}}, {{garage.villeGarage}}
+	</p>
+	<p *ngIf="garage.telGarage">
+		tel : {{garage.telGarage}}
+	</p>
+	<p *ngIf="garage.mailGarage">
+		mail : {{garage.mailGarage}}
+	</p>
 </div>
+<h1 *ngIf="!garage">Voitures sans garage</h1>
+<button (click)="goBack()">go back</button>
+<div>
+	<p>Voitures : </p>
+	<div *ngIf="voitures">
+		<ul>
+			<li *ngFor="let voiture of voitures" [class.selected]="voiture === selectedVoiture" (click)="onSelect(voiture)">
+				<p>{{voiture.nomMarque}} {{voiture.model}} - {{voiture.couleur}} -
+					{{voiture.dateImmat}} -
+					{{voiture.plaque}} - {{voiture.km}} Km - {{voiture.prix}}€</p>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<app-voiture-edit *ngIf="selectedVoiture" [voiture]="selectedVoiture" (changed)="ngOnInit()"></app-voiture-edit>
