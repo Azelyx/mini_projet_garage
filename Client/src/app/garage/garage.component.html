@@ -1,3 +1,4 @@
+<button (click)="goBack()">go back</button>
 <div *ngIf="garage">
 	<h1>{{garage.nomGarage}}</h1>
 	<p *ngIf="garage.adresseGarage">
@@ -9,9 +10,9 @@
 	<p *ngIf="garage.mailGarage">
 		mail : {{garage.mailGarage}}
 	</p>
+	<button (click)="suppGarage()">Supprimer le garage</button>
 </div>
 <h1 *ngIf="!garage">Voitures sans garage</h1>
-<button (click)="goBack()">go back</button>
 <div>
 	<p>Voitures : </p>
 	<div *ngIf="voitures">

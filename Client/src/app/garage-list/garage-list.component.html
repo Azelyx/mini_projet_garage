@@ -1,3 +1,85 @@
+<button (click)="showAddGarageClick()">Ajouter un garage</button>
+<button (click)="showAddVoitureClick()">Ajouter une voiture</button>
+<div *ngIf="showAddGarage">
+  <form (ngSubmit)="addGarage()">
+    <div class="form-group">
+      <label for="NomGarage">Nom</label>
+      <input [(ngModel)]="garage.nomGarage" type="text" class="form-control" name="NomGarage" id="NomGarage" required>
+    </div>
+    <div class="form-group">
+      <label for="cp">Code postal</label>
+      <input [(ngModel)]="garage.cpGarage" type="number" class="form-control" name="Cp" id="Cp" required>
+    </div>
+    <div class="form-group">
+      <label for="Ville">Ville</label>
+      <input [(ngModel)]="garage.villeGarage" type="text" class="form-control" name="Ville" id="Ville" required>
+    </div>
+    <div class="form-group">
+      <label for="Adress">Adress</label>
+      <input [(ngModel)]="garage.adresseGarage" type="text" class="form-control" name="Adress" id="Adress" required>
+    </div>
+    <div class="form-group">
+      <label for="Telephone">Telephone</label>
+      <input [(ngModel)]="garage.telGarage" type="tel" class="form-control" name="Telephone" id="Telephone">
+    </div>
+    <div class="form-group">
+      <label for="Mail">Mail</label>
+      <input [(ngModel)]="garage.mailGarage" type="mail" class="form-control" name="Mail" id="Mail">
+    </div>
+    <div class="form-group">
+      <label for="NbMax">Nombre de place(s)</label>
+      <input [(ngModel)]="garage.nbVoitureMax" type="number" class="form-control" name="NbMax" id="NbMax">
+    </div>
+    <button type="submit" class="btn btn-success">Ajouter</button>
+  </form>
+</div>
+<div *ngIf="showAddVoiture">
+  <form (ngSubmit)="addVoiture()">
+    <div class="form-group">
+      <label for="Garage">Garage</label>
+      <select [(ngModel)]="voiture.idGarage" class="form-control" name="Garage" id="Garage" required>
+        <option *ngFor="let garage of garages" [ngValue]="garage.idGarage">{{garage.nomGarage }}</option>
+        <option value="null">Aucun</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="Marque">Marque</label>
+      <select [(ngModel)]="voiture.idMarque" class="form-control" name="Marque" id="Marque" required>
+        <option *ngFor="let marque of marques" [ngValue]="marque.idMarque">{{marque.nomMarque }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="Model">Model</label>
+      <input [(ngModel)]="voiture.model" type="text" class="form-control" name="Model" id="Model" placeholder="Clio"
+        required>
+    </div>
+    <div class="form-group">
+      <label for="Couleur">Couleur</label>
+      <input [(ngModel)]="voiture.couleur" type="text" class="form-control" name="Couleur" id="Couleur" placeholder="Rouge"
+        required>
+    </div>
+    <div class="form-group">
+      <label for="Plaque">Plaque</label>
+      <input [(ngModel)]="voiture.plaque" type="text" class="form-control" name="Plaque" id="Plaque" placeholder="AB123CD"
+        required>
+    </div>
+    <div class="form-group">
+      <label for="dateImmat">Date immatriculation</label>
+      <input [(ngModel)]="voiture.dateImmat" type="date" class="form-control" name="dateImmat" id="dateImmat" required>
+    </div>
+    <div class="form-group">
+      <label for="Km">Km</label>
+      <input [(ngModel)]="voiture.km" type="number" class="form-control" name="Km" id="Km" placeholder="10000" required>
+    </div>
+    <div class="form-group">
+      <label for="Prix">Prix</label>
+      <input [(ngModel)]="voiture.prix" type="number" class="form-control" name="Prix" id="Prix" placeholder="10000"
+        required>
+    </div>
+    <button type="submit" class="btn btn-success">Ajouter</button>
+  </form>
+</div>
+
 <ul>
   <li *ngFor="let garage of garages">
     <p>{{garage.nomGarage}}</p><button routerLink="/garage/{{garage.idGarage}}">Voir</button>

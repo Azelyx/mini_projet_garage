@@ -19,20 +19,18 @@ export class VoitureEditComponent implements OnInit {
   garages: [Garage];
 
   onSubmit() {
-    console.log('new : ', this.voiture);
     if (!Number.isInteger(this.voiture.idGarage)) this.voiture.idGarage = null;
     this.voitureServcice.updateVoiture(this.voiture).subscribe(res => {
-      console.log('onSubmit res : ', res.json());
       if (res.json().affectedRows == 1) this.changed.emit();
     });
   }
 
   delete() {
-    console.log('delete');
-    this.voitureServcice.updateVoiture(this.voiture).subscribe(res => {
-      console.log('onSubmit res : ', res.json());
-      if (res.json().affectedRows == 1) this.changed.emit();
-    });
+    this.voitureServcice
+      .deleteVoitureById(this.voiture.idVoiture)
+      .subscribe(res => {
+        if (res.json().affectedRows == 1) this.changed.emit();
+      });
   }
 
   constructor(

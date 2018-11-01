@@ -35,6 +35,13 @@ export class GarageComponent implements OnInit {
     this.location.back();
   }
 
+  suppGarage(): void {
+    this.garageService.deleteGarageById(this.garage.idGarage).subscribe(res => {
+      console.log('supp', res.json());
+      if (res.json().affectedRows === 1) this.goBack();
+    });
+  }
+
   onSelect(voiture: Voiture) {
     this.selectedVoiture = voiture;
   }
@@ -51,23 +58,18 @@ export class GarageComponent implements OnInit {
 
   getVoitureByGarageId() {
     const id = +this.route.snapshot.paramMap.get('id');
-    if (this.route.snapshot.paramMap.get('id') !== 'noGarage') 
+    if (this.route.snapshot.paramMap.get('id') !== 'noGarage')
       this.voituresService.getVoitureByGarageId(id).subscribe(res => {
         this.voitures = res.json();
         this.selectedVoiture = this.voitures[0];
         console.log('voitures', this.voitures);
       });
-     else 
-      
-        this.voituresService.getAllwithoutGarage().subscribe(res => {
-		  this.voitures = res.json();
-		  if (this.voitures.length > 0) 
-		  this.selectedVoiture = this.voitures[0];
-		  else
-		  this.router.navigate(['/']);
-          console.log('voitures', this.voitures);
-        });
-      
-    }
+    else
+      this.voituresService.getAllwithoutGarage().subscribe(res => {
+        this.voitures = res.json();
+        if (this.voitures.length > 0) this.selectedVoiture = this.voitures[0];
+        else this.router.navigate(['/']);
+        console.log('voitures', this.voitures);
+      });
   }
 }

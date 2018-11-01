@@ -1,14 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    {{ title }}
-  </h1>
+	<h1>
+		{{ title }}
+	</h1>
 </div>
-<button (click)="addGarage()">Ajouter un garage</button>
-<form *ngIf="showAddGarage">
-  <label>name:
-    <input [(ngModel)]="garge.nomGarage" placeholder="Nom garage">
-  </label>
-</form>
-<button (click)="addVoiture()">Ajouter une voiture</button>
 <router-outlet></router-outlet>
