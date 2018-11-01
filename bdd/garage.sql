@@ -57,16 +57,16 @@ INSERT INTO `garage` (`idGarage`, `nomGarage`, `cpGarage`, `villeGarage`, `adres
 
 DROP TABLE IF EXISTS `marque`;
 CREATE TABLE IF NOT EXISTS `marque` (
-  `idMArque` int(11) NOT NULL AUTO_INCREMENT,
+  `idMarque` int(11) NOT NULL AUTO_INCREMENT,
   `nomMarque` varchar(50) NOT NULL,
-  PRIMARY KEY (`idMArque`)
+  PRIMARY KEY (`idMarque`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `marque`
 --
 
-INSERT INTO `marque` (`idMArque`, `nomMarque`) VALUES
+INSERT INTO `marque` (`idMarque`, `nomMarque`) VALUES
 (1, 'Opel'),
 (2, 'Renault'),
 (3, 'Peugeot'),
@@ -118,7 +118,7 @@ INSERT INTO `voiture` (`idVoiture`, `idGarage`, `idMarque`, `couleur`, `plaque`,
 --
 ALTER TABLE `voiture`
   ADD CONSTRAINT `fk_foreign_key_garage` FOREIGN KEY (`idGarage`) REFERENCES `garage` (`idGarage`),
-  ADD CONSTRAINT `fk_foreign_key_marque` FOREIGN KEY (`idMarque`) REFERENCES `marque` (`idMArque`);
+  ADD CONSTRAINT `fk_foreign_key_marque` FOREIGN KEY (`idMarque`) REFERENCES `marque` (`idMarque`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
