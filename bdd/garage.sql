@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 31 oct. 2018 à 10:54
+-- Généré le :  jeu. 01 nov. 2018 à 09:34
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -71,7 +71,7 @@ INSERT INTO `marque` (`idMArque`, `nomMarque`) VALUES
 (2, 'Renault'),
 (3, 'Peugeot'),
 (4, 'Citroen'),
-(6, 'Kia2');
+(6, 'Kia');
 
 -- --------------------------------------------------------
 
@@ -89,23 +89,25 @@ CREATE TABLE IF NOT EXISTS `voiture` (
   `model` varchar(50) NOT NULL,
   `dateImmat` date NOT NULL,
   `km` int(11) NOT NULL,
+  `prix` int(11) NOT NULL,
   PRIMARY KEY (`idVoiture`),
   KEY `fk_foreign_key_garage` (`idGarage`),
   KEY `fk_foreign_key_marque` (`idMarque`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `voiture`
 --
 
-INSERT INTO `voiture` (`idVoiture`, `idGarage`, `idMarque`, `couleur`, `plaque`, `model`, `dateImmat`, `km`) VALUES
-(1, 1, 1, 'Rouge', 'AB123CD', 'Astra', '2017-07-12', 25000),
-(2, 1, 3, 'Blanc', 'AC124DE', '208', '2017-10-27', 18000),
-(3, 1, 3, 'Bleu', 'RE598GT', '508', '2018-10-30', 0),
-(4, 1, 2, 'Vert', 'UI896HU', 'Clio', '2016-11-20', 60000),
-(5, 2, 4, 'Noir', 'DR458HZ', 'C1', '2015-05-02', 80000),
-(6, 2, 4, 'Orange', 'BK565KI', 'C5', '2008-10-30', 150000),
-(7, 2, 2, 'Noir', 'FG454TY', 'Megane', '2018-06-25', 30000);
+INSERT INTO `voiture` (`idVoiture`, `idGarage`, `idMarque`, `couleur`, `plaque`, `model`, `dateImmat`, `km`, `prix`) VALUES
+(1, 1, 1, 'Rouge', 'AB123CD', 'Astra', '2017-07-12', 25000, 20000),
+(2, 1, 3, 'Blanc', 'AC124DE', '208', '2017-10-27', 18000, 15000),
+(3, 1, 3, 'Bleu', 'RE598GT', '508', '2018-10-30', 0, 35000),
+(4, 1, 2, 'Vert', 'UI896HU', 'Clio', '2016-11-20', 60000, 10000),
+(5, 2, 4, 'Noir', 'DR458HZ', 'C1', '2015-05-02', 80000, 8000),
+(6, 2, 4, 'Orange', 'BK565KI', 'C5', '2008-10-30', 150000, 5000),
+(7, 2, 2, 'Noir', 'FG454TY', 'Megane', '2018-06-25', 30000, 17000),
+(8, NULL, 6, 'Rouge', 'DR458HG', 'Sportage', '2018-10-30', 1000, 13000);
 
 --
 -- Contraintes pour les tables déchargées
