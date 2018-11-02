@@ -9,19 +9,19 @@ import { VoitureService } from '../services/voiture.service';
   templateUrl: './voiture-edit.component.html',
   styleUrls: ['./voiture-edit.component.css'],
   inputs: ['voiture'],
-  outputs: ['changed'],
+  outputs: ['edited'],
 })
 export class VoitureEditComponent implements OnInit {
   @Input()
   voiture: Voiture;
   @Output()
-  changed = new EventEmitter<boolean>();
+  edited = new EventEmitter<boolean>();
   garages: [Garage];
 
   onSubmit() {
     if (!Number.isInteger(this.voiture.idGarage)) this.voiture.idGarage = null;
     this.voitureServcice.updateVoiture(this.voiture).subscribe(res => {
-      if (res.json().affectedRows == 1) this.changed.emit();
+      if (res.json().affectedRows == 1) this.edited.emit();
     });
   }
 
@@ -29,7 +29,7 @@ export class VoitureEditComponent implements OnInit {
     this.voitureServcice
       .deleteVoitureById(this.voiture.idVoiture)
       .subscribe(res => {
-        if (res.json().affectedRows == 1) this.changed.emit();
+        if (res.json().affectedRows == 1) this.edited.emit();
       });
   }
 

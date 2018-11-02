@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GarageService } from '../services/garage.service';
 import { VoitureService } from '../services/voiture.service';
-import {MarqueService} from '../services/marque.service':
+import { MarqueService } from '../services/marque.service';
 import { Garage } from '../garage';
 import { Voiture } from '../voiture';
 import { Marque } from '../marque';
@@ -17,8 +17,8 @@ export class GarageListComponent implements OnInit {
   marques: [Marque];
 
   showAddGarage = false;
-  garage = new Garage();
   showAddVoiture = false;
+  showMarque = false;
 
   constructor(
     private garageService: GarageService,
@@ -31,30 +31,45 @@ export class GarageListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.showAddVoiture = false;
+    this.showAddGarage = false;
+    this.showMarque = false;
+
+    this.getAllGarages();
+    this.getAllwithoutGarage();
+    this.getAllMarques();
+  }
+
+  getAllGarages() {
     this.garageService.getAllGarages().subscribe(res => {
       this.garages = res.json();
     });
-    this.voitureService.getAllwithoutGarage().subscribe(res => {
-      if (res.json().length >= 1) this.voitures = res.json();
-    });
+  }
+  getAllMarques() {
     this.marqueService.getAllMarques().subscribe(res => {
       this.marques = res.json();
+    });
+  }
+  getAllwithoutGarage() {
+    this.voitureService.getAllwithoutGarage().subscribe(res => {
+      if (res.json().length >= 1) this.voitures = res.json();
+      else this.voitures = null;
     });
   }
 
   showAddGarageClick() {
     this.showAddVoiture = false;
+    this.showMarque = false;
     this.showAddGarage = !this.showAddGarage;
   }
-  addGarage() {
-    console.log('addGarage', this.garage);
-    this.garageService.createGarage(this.garage).subscribe(res => {
-      console.log(res.json());
-      this.ngOnInit();
-    });
-  }
-
   showAddVoitureClick() {
     this.showAddGarage = false;
+    this.showMarque = false;
     this.showAddVoiture = !this.showAddVoiture;
   }
+  showMarqueClick() {
+    this.showAddGarage = false;
+    this.showMarque = !this.showMarque;
+    this.showAddVoiture = false;
+  }
+}

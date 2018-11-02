@@ -1,0 +1,33 @@
+<form (ngSubmit)="EditGarage()">
+  <div class="form-group">
+    <label for="Nom">Nom</label>
+    <input [(ngModel)]="garage.nomGarage" type="text" class="form-control" name="Nom" id="Nom" required>
+  </div>
+  <div class="form-group">
+    <label for="AdresseGarage">Adresse du garage</label>
+    <input [(ngModel)]="garage.adresseGarage" type="text" class="form-control" name="AdresseGarage" id="AdresseGarage"
+      required>
+  </div>
+  <div class="form-group">
+    <label for="Cp">Code postal</label>
+    <input [(ngModel)]="garage.cpGarage" type="number" class="form-control" name="Cp" id="Cp" required>
+  </div>
+  <div class="form-group">
+    <label for="Ville">Ville</label>
+    <input [(ngModel)]="garage.villeGarage" type="text" class="form-control" name="Ville" id="Ville" required>
+  </div>
+  <div class="form-group">
+    <label for="tel">Telephone</label>
+    <input [(ngModel)]="garage.telGarage" type="tel" class="form-control" name="tel" id="tel">
+  </div>
+  <div class="form-group">
+    <label for="Mail">Mail</label>
+    <input [(ngModel)]="garage.mailGarage" type="text" class="form-control" name="Mail" id="Mail">
+  </div>
+  <div class="form-group">
+    <label for="nbVoitureMax">Nombre de places</label>
+    <input min="0" max="10000" step="1" [(ngModel)]="garage.nbVoitureMax" type="number" class="form-control" name="nbVoitureMax"
+      id="nbVoitureMax" required>
+  </div>
+  <button type="submit" class="btn btn-success">Valider</button>
+</form>

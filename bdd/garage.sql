@@ -118,7 +118,7 @@ INSERT INTO `voiture` (`idVoiture`, `idGarage`, `idMarque`, `couleur`, `plaque`,
 --
 ALTER TABLE `voiture`
   ADD CONSTRAINT `fk_foreign_key_garage` FOREIGN KEY (`idGarage`) REFERENCES `garage` (`idGarage`) ON DELETE SET NULL,
-  ADD CONSTRAINT `fk_foreign_key_marque` FOREIGN KEY (`idMarque`) REFERENCES `marque` (`idMarque`);
+  ADD CONSTRAINT `fk_foreign_key_marque` FOREIGN KEY (`idMarque`) REFERENCES `marque` (`idMarque`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

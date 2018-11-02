@@ -1,6 +1,6 @@
 <div *ngIf="voiture">
 
-	<h2>{{voiture.nomMarque}} {{voiture.model}} - {{voiture.plaque}}</h2>
+	<h2>{{voiture.nomMarque}} {{voiture.model}}</h2>
 
 	<form (ngSubmit)="onSubmit()" #editVoitureForm="ngForm">
 		<div class="form-group">
@@ -20,7 +20,8 @@
 		</div>
 		<div class="form-group">
 			<label for="Plaque">Plaque</label>
-			<input [(ngModel)]="voiture.plaque" type="text" class="form-control" name="Plaque" id="Plaque" required>
+			<input pattern="[A-Za-z]{2}[0-9]{3}[A-Za-z]{2}" placeholder="AB123CD" [(ngModel)]="voiture.plaque" type="text" class="form-control"
+			 name="Plaque" id="Plaque" required>
 		</div>
 		<div class="form-group">
 			<label for="Km">Km</label>
@@ -34,6 +35,7 @@
 		</div>
 		<button type="submit" [disabled]="!editVoitureForm.form.valid" class="btn btn-success"><i class="fas fa-pen"></i>
 			Modifier</button>
-		<button (click)="delete()" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Supprimer</button>
+		<button (click)="delete()" [disabled]="!voiture.idVoiture" class="btn btn-danger"><i class="fas fa-trash-alt"></i>
+			Supprimer</button>
 	</form>
 </div>

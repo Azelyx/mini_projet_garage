@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Http } from '@angular/http';
+import { Marque } from '../marque';
 
 const API_URL = environment.apiUrl;
 
@@ -16,8 +17,8 @@ export class MarqueService {
   }
 
   // API: POST /marque
-  public createMarque(body) {
-    return this.http.post(API_URL + '/marque', body);
+  public createMarque(marque: Marque) {
+    return this.http.post(API_URL + '/marque', marque);
   }
 
   // API: GET /marque/:id
@@ -26,8 +27,8 @@ export class MarqueService {
   }
 
   // API: PUT /marque/:id
-  public updateMarque(id, body) {
-    return this.http.put(API_URL + '/marque/' + id, body);
+  public updateMarque(marque: Marque) {
+    return this.http.put(API_URL + '/marque/' + marque.idMarque, marque);
   }
 
   // DELETE /marque/:id

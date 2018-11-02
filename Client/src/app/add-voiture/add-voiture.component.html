@@ -1,0 +1,46 @@
+<form (ngSubmit)="addVoiture(); addVoitureForm.reset()" #addVoitureForm="ngForm">
+  <div class="form-group">
+    <label for="Garage">Garage</label>
+    <select [(ngModel)]="voiture.idGarage" class="form-control" name="Garage" id="Garage" required>
+      <option *ngFor="let garage of data.garages" [ngValue]="garage.idGarage">{{garage.nomGarage }}</option>
+      <option value="aucun">Aucun</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="Marque">Marque</label>
+    <select [(ngModel)]="voiture.idMarque" class="form-control" name="Marque" id="Marque" required>
+      <option *ngFor="let marque of data.marques" [ngValue]="marque.idMarque">{{marque.nomMarque }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="Model">Model</label>
+    <input [(ngModel)]="voiture.model" type="text" class="form-control" name="Model" id="Model" placeholder="Clio"
+      required>
+  </div>
+  <div class="form-group">
+    <label for="Couleur">Couleur</label>
+    <input [(ngModel)]="voiture.couleur" type="text" class="form-control" name="Couleur" id="Couleur" placeholder="Rouge"
+      required>
+  </div>
+  <div class="form-group">
+    <label for="Plaque">Plaque</label>
+    <input placeholder="AB123CD" pattern="[A-Za-z]{2}[0-9]{3}[A-Za-z]{2}" [(ngModel)]="voiture.plaque" type="text"
+      class="form-control" name="Plaque" id="Plaque" placeholder="AB123CD" required>
+  </div>
+  <div class="form-group">
+    <label for="dateImmat">Date immatriculation</label>
+    <input [(ngModel)]="voiture.dateImmat" type="date" class="form-control" name="dateImmat" id="dateImmat" required>
+  </div>
+  <div class="form-group">
+    <label for="Km">Km</label>
+    <input min="0" max="1000000000" step="1" [(ngModel)]="voiture.km" type="number" class="form-control" name="Km" id="Km"
+      placeholder="10000" required>
+  </div>
+  <div class="form-group">
+    <label for="Prix">Prix</label>
+    <input min="0.00" max="1000000.00" step="0.01" [(ngModel)]="voiture.prix" type="number" class="form-control" name="Prix"
+      id="Prix" placeholder="10000" required>
+  </div>
+  <button type="submit" [disabled]="!addVoitureForm.form.valid" class="btn btn-success"><i class="fas fa-plus"></i>
+    Ajouter</button>
+</form>

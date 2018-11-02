@@ -40,12 +40,6 @@ export class GarageComponent implements OnInit {
   showEditGarageClick() {
     this.showEditGarage = !this.showEditGarage;
   }
-  EditGarage() {
-    this.garageService.updateGarage(this.newGarage).subscribe(res => {
-      console.log('EditGarage', res.json());
-      if (res.json().affectedRows === 1) this.ngOnInit();
-    });
-  }
 
   suppGarage(): void {
     this.garageService.deleteGarageById(this.garage.idGarage).subscribe(res => {

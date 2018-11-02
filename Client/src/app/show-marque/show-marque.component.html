@@ -1,0 +1,33 @@
+<div class="listMarque">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let marque of marques">
+      {{marque.nomMarque}} <button (click)="open(content,marque.idMarque);" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>
+        Supprimer</button>
+    </li>
+    <li class="list-group-item">
+      <form class="row" (ngSubmit)="addMarque(); addMarqueFrom.reset();" #addMarqueFrom="ngForm">
+        <input [(ngModel)]="marque.nomMarque" type="text" class="form-control col" name="Nom" id="Nom" required>
+        <div class="col"><button type="submit" [disabled]="!addMarqueFrom.form.valid" class="btn btn-success btn-sm"><i
+              class="fas fa-plus"></i>
+            Ajouter</button>
+        </div>
+      </form>
+    </li>
+  </ul>
+</div>
+<!-- Modal -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Supprimer une marque</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss(false)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Toutes les voitures de la marque seront supprimées</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close(false)">Anuler</button>
+    <button type="button" class="btn btn-outline-danger" (click)="modal.close(true)">Valider</button>
+  </div>
+</ng-template>

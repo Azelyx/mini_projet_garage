@@ -34,7 +34,7 @@ var Voiture = {
 				Voiture.idGarage,
 				Voiture.idMarque,
 				Voiture.couleur,
-				Voiture.plaque,
+				Voiture.plaque.toUpperCase(),
 				Voiture.model,
 				Voiture.dateImmat,
 				Voiture.km,
@@ -56,7 +56,7 @@ var Voiture = {
 			[
 				Voiture.idGarage,
 				Voiture.couleur,
-				Voiture.plaque,
+				Voiture.plaque.toUpperCase(),
 				Voiture.km,
 				Voiture.prix,
 				id,
