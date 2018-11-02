@@ -55,7 +55,7 @@ export class GarageComponent implements OnInit {
   }
 
   onSelect(voiture: Voiture) {
-    this.selectedVoiture = voiture;
+    this.selectedVoiture = { ...voiture };
   }
 
   getGarageById() {
@@ -74,13 +74,14 @@ export class GarageComponent implements OnInit {
     if (this.route.snapshot.paramMap.get('id') !== 'noGarage')
       this.voituresService.getVoitureByGarageId(id).subscribe(res => {
         this.voitures = res.json();
-        this.selectedVoiture = this.voitures[0];
+        this.selectedVoiture = { ...this.voitures[0] };
         console.log('voitures', this.voitures);
       });
     else
       this.voituresService.getAllwithoutGarage().subscribe(res => {
         this.voitures = res.json();
-        if (this.voitures.length > 0) this.selectedVoiture = this.voitures[0];
+        if (this.voitures.length > 0)
+          this.selectedVoiture = { ...this.voitures[0] };
         else this.router.navigate(['/']);
         console.log('voitures', this.voitures);
       });

@@ -1,7 +1,20 @@
-<button (click)="showAddGarageClick()">Ajouter un garage</button>
-<button (click)="showAddVoitureClick()">Ajouter une voiture</button>
+<h1 class="center title">Liste des garages</h1>
+
+<div class="listGarages">
+  <ul class="list-group">
+    <li class="list-group-item pointer" *ngFor="let garage of garages" routerLink="/garage/{{garage.idGarage}}">
+      {{garage.nomGarage}}
+    </li>
+    <li class="list-group-item pointer noGarage" *ngIf="voitures" routerLink="/garage/noGarage">
+      <span class="badge badge-secondary">{{voitures.length}}</span> Voiture(s) sans garage
+    </li>
+  </ul>
+</div>
+
+<button (click)="showAddGarageClick()" class="btn btn-success">Ajouter un garage</button>
+<button (click)="showAddVoitureClick()" class="btn btn-success">Ajouter une voiture</button>
 <div *ngIf="showAddGarage">
-  <form (ngSubmit)="addGarage()">
+  <form (ngSubmit)="addGarage(); addGarageForm.reset()" #addGarageForm="ngForm">
     <div class="form-group">
       <label for="NomGarage">Nom</label>
       <input [(ngModel)]="garage.nomGarage" type="text" class="form-control" name="NomGarage" id="NomGarage" required>
@@ -24,22 +37,22 @@
     </div>
     <div class="form-group">
       <label for="Mail">Mail</label>
-      <input [(ngModel)]="garage.mailGarage" type="mail" class="form-control" name="Mail" id="Mail">
+      <input [(ngModel)]="garage.mailGarage" type="email" class="form-control" name="Mail" id="Mail">
     </div>
     <div class="form-group">
       <label for="NbMax">Nombre de place(s)</label>
-      <input [(ngModel)]="garage.nbVoitureMax" type="number" class="form-control" name="NbMax" id="NbMax">
+      <input [(ngModel)]="garage.nbVoitureMax" type="number" class="form-control" name="NbMax" id="NbMax" required>
     </div>
-    <button type="submit" class="btn btn-success">Ajouter</button>
+    <button type="submit" [disabled]="!addGarageForm.form.valid" class="btn btn-success">Ajouter</button>
   </form>
 </div>
 <div *ngIf="showAddVoiture">
-  <form (ngSubmit)="addVoiture()">
+  <form (ngSubmit)="addVoiture()" #addVoitureForm="ngForm">
     <div class="form-group">
       <label for="Garage">Garage</label>
       <select [(ngModel)]="voiture.idGarage" class="form-control" name="Garage" id="Garage" required>
         <option *ngFor="let garage of garages" [ngValue]="garage.idGarage">{{garage.nomGarage }}</option>
-        <option value="null">Aucun</option>
+        <option value="aucun">Aucun</option>
       </select>
     </div>
     <div class="form-group">
@@ -76,15 +89,6 @@
       <input [(ngModel)]="voiture.prix" type="number" class="form-control" name="Prix" id="Prix" placeholder="10000"
         required>
     </div>
-    <button type="submit" class="btn btn-success">Ajouter</button>
+    <button type="submit" [disabled]="!addVoitureForm.form.valid" class="btn btn-success">Ajouter</button>
   </form>
 </div>
-
-<ul>
-  <li *ngFor="let garage of garages">
-    <p>{{garage.nomGarage}}</p><button routerLink="/garage/{{garage.idGarage}}">Voir</button>
-  </li>
-  <li *ngIf="voitures">
-    <p>Voitures sans garage</p><button routerLink="/garage/noGarage">Voir</button>
-  </li>
-</ul>
