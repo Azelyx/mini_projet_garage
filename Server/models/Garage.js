@@ -2,11 +2,14 @@ var db = require('../dbconnection');
 
 var Garage = {
 	getAllGarages: function(callback) {
-		return db.query('Select * from Garage', callback);
+		return db.query(
+			'select garage.idGarage,nomGarage,cpGarage,villeGarage,adresseGarage,telGarage,mailGarage,nbVoitureMax,COUNT(idVoiture) as nbVoiture FROM Garage, Voiture WHERE voiture.idGarage = garage.idGarage GROUP BY garage.idGarage',
+			callback
+		);
 	},
 	getGarageById: function(id, callback) {
 		return db.query(
-			'select * from Garage where idGarage=?',
+			'select garage.idGarage,nomGarage,cpGarage,villeGarage,adresseGarage,telGarage,mailGarage,nbVoitureMax,COUNT(idVoiture) as nbVoiture FROM Garage, Voiture WHERE voiture.idGarage = garage.idGarage AND idGarage=? GROUP BY garage.idGarage',
 			[id],
 			callback
 		);
