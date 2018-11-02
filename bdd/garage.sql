@@ -19,17 +19,17 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `garage`
+-- Base de données :  `Garage`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `garage`
+-- Structure de la table `Garage`
 --
 
-DROP TABLE IF EXISTS `garage`;
-CREATE TABLE IF NOT EXISTS `garage` (
+DROP TABLE IF EXISTS `Garage`;
+CREATE TABLE IF NOT EXISTS `Garage` (
   `idGarage` int(11) NOT NULL AUTO_INCREMENT,
   `nomGarage` varchar(50) NOT NULL,
   `cpGarage` int(10) NOT NULL,
@@ -42,31 +42,31 @@ CREATE TABLE IF NOT EXISTS `garage` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `garage`
+-- Déchargement des données de la table `Garage`
 --
 
-INSERT INTO `garage` (`idGarage`, `nomGarage`, `cpGarage`, `villeGarage`, `adresseGarage`, `telGarage`, `mailGarage`, `nbVoitureMax`) VALUES
+INSERT INTO `Garage` (`idGarage`, `nomGarage`, `cpGarage`, `villeGarage`, `adresseGarage`, `telGarage`, `mailGarage`, `nbVoitureMax`) VALUES
 (1, 'Garage de la Gare', 51100, 'Reims', '1 rue de la gare', 326262626, 'contact@GaragedelaGare.fr', 30),
 (2, 'Top occasion', 51100, 'Reims', 'ZAC Croix Blandin, 1 Rue Lena Bernstein', NULL, NULL, 20);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `marque`
+-- Structure de la table `Marque`
 --
 
-DROP TABLE IF EXISTS `marque`;
-CREATE TABLE IF NOT EXISTS `marque` (
+DROP TABLE IF EXISTS `Marque`;
+CREATE TABLE IF NOT EXISTS `Marque` (
   `idMarque` int(11) NOT NULL AUTO_INCREMENT,
   `nomMarque` varchar(50) NOT NULL,
   PRIMARY KEY (`idMarque`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `marque`
+-- Déchargement des données de la table `Marque`
 --
 
-INSERT INTO `marque` (`idMarque`, `nomMarque`) VALUES
+INSERT INTO `Marque` (`idMarque`, `nomMarque`) VALUES
 (1, 'Opel'),
 (2, 'Renault'),
 (3, 'Peugeot'),
@@ -76,11 +76,11 @@ INSERT INTO `marque` (`idMarque`, `nomMarque`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `voiture`
+-- Structure de la table `Voiture`
 --
 
-DROP TABLE IF EXISTS `voiture`;
-CREATE TABLE IF NOT EXISTS `voiture` (
+DROP TABLE IF EXISTS `Voiture`;
+CREATE TABLE IF NOT EXISTS `Voiture` (
   `idVoiture` int(11) NOT NULL AUTO_INCREMENT,
   `idGarage` int(11) DEFAULT NULL,
   `idMarque` int(11) NOT NULL,
@@ -96,10 +96,10 @@ CREATE TABLE IF NOT EXISTS `voiture` (
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `voiture`
+-- Déchargement des données de la table `Voiture`
 --
 
-INSERT INTO `voiture` (`idVoiture`, `idGarage`, `idMarque`, `couleur`, `plaque`, `model`, `dateImmat`, `km`, `prix`) VALUES
+INSERT INTO `Voiture` (`idVoiture`, `idGarage`, `idMarque`, `couleur`, `plaque`, `model`, `dateImmat`, `km`, `prix`) VALUES
 (1, 1, 1, 'Rouge', 'AB123CD', 'Astra', '2017-07-12', 25000, 20000),
 (2, 1, 3, 'Blanc', 'AC124DE', '208', '2017-10-27', 18000, 15000),
 (3, 1, 3, 'Bleu', 'RE598GT', '508', '2018-10-30', 0, 35000),
@@ -114,11 +114,11 @@ INSERT INTO `voiture` (`idVoiture`, `idGarage`, `idMarque`, `couleur`, `plaque`,
 --
 
 --
--- Contraintes pour la table `voiture`
+-- Contraintes pour la table `Voiture`
 --
-ALTER TABLE `voiture`
-  ADD CONSTRAINT `fk_foreign_key_garage` FOREIGN KEY (`idGarage`) REFERENCES `garage` (`idGarage`) ON DELETE SET NULL,
-  ADD CONSTRAINT `fk_foreign_key_marque` FOREIGN KEY (`idMarque`) REFERENCES `marque` (`idMarque`) ON DELETE CASCADE;
+ALTER TABLE `Voiture`
+  ADD CONSTRAINT `fk_foreign_key_garage` FOREIGN KEY (`idGarage`) REFERENCES `Garage` (`idGarage`) ON DELETE SET NULL,
+  ADD CONSTRAINT `fk_foreign_key_marque` FOREIGN KEY (`idMarque`) REFERENCES `Marque` (`idMarque`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
