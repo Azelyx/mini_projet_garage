@@ -10,9 +10,8 @@
     </li>
   </ul>
 </div>
-
-<button (click)="showAddGarageClick()" class="btn btn-success">Ajouter un garage</button>
-<button (click)="showAddVoitureClick()" class="btn btn-success">Ajouter une voiture</button>
+<button (click)="showAddGarageClick()" class="btn btn-success"><i class="fas fa-home"></i> Ajouter un garage</button>
+<button (click)="showAddVoitureClick()" class="btn btn-success"><i class="fa fa-car"></i> Ajouter une voiture</button>
 <div *ngIf="showAddGarage">
   <form (ngSubmit)="addGarage(); addGarageForm.reset()" #addGarageForm="ngForm">
     <div class="form-group">
@@ -43,7 +42,8 @@
       <label for="NbMax">Nombre de place(s)</label>
       <input [(ngModel)]="garage.nbVoitureMax" type="number" class="form-control" name="NbMax" id="NbMax" required>
     </div>
-    <button type="submit" [disabled]="!addGarageForm.form.valid" class="btn btn-success">Ajouter</button>
+    <button type="submit" [disabled]="!addGarageForm.form.valid" class="btn btn-success"><i class="fas fa-plus"></i>
+      Ajouter</button>
   </form>
 </div>
 <div *ngIf="showAddVoiture">
@@ -89,6 +89,7 @@
       <input [(ngModel)]="voiture.prix" type="number" class="form-control" name="Prix" id="Prix" placeholder="10000"
         required>
     </div>
-    <button type="submit" [disabled]="!addVoitureForm.form.valid" class="btn btn-success">Ajouter</button>
+    <button type="submit" [disabled]="!addVoitureForm.form.valid" class="btn btn-success"><i class="fas fa-plus"></i>
+      Ajouter</button>
   </form>
 </div>

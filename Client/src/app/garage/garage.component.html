@@ -1,5 +1,7 @@
-<h1 class="garageName" *ngIf="garage"><button (click)="goBack()" class="retour btn btn-secondary">Retour</button>{{garage.nomGarage}}</h1>
-<h1 class="garageName" *ngIf="!garage"><button (click)="goBack()" class="retour btn btn-secondary">Retour</button>Voitures
+<h1 class="garageName" *ngIf="garage"><button (click)="goBack()" class="retour btn btn-secondary"><i class="fas fa-chevron-left"></i>
+		Retour</button>{{garage.nomGarage}}</h1>
+<h1 class="garageName" *ngIf="!garage"><button (click)="goBack()" class="retour btn btn-secondary"><i class="fas fa-chevron-left"></i>
+		Retour</button>Voitures
 	sans garage</h1>
 <div class="row">
 	<div class="col-sm">
@@ -16,8 +18,8 @@
 			<div class="line">
 				<div class="lineInfo">Nombre de places : </div>{{garage.nbVoitureMax}}
 			</div>
-			<button (click)="suppGarage()" class="btn btn-danger">Supprimer le garage</button>
-			<button (click)="showEditGarageClick()" class="btn btn-warning">Modifier le garage</button>
+			<button (click)="suppGarage()" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Supprimer le garage</button>
+			<button (click)="showEditGarageClick()" class="btn btn-warning"><i class="fas fa-pen"></i> Modifier le garage</button>
 		</div>
 	</div>
 	<div class="col-sm">
@@ -67,7 +69,7 @@
 			<ul class="list-group">
 				<li class="list-group-item pointer" *ngFor="let voiture of voitures" [ngClass]="voiture.idVoiture === selectedVoiture.idVoiture ? 'selectedVoiture':'inactive'"
 				 (click)="onSelect(voiture)">
-					{{voiture.nomMarque}} {{voiture.model}} - {{voiture.couleur}} -
+					<i class="fas fa-car"></i> {{voiture.nomMarque}} {{voiture.model}} - {{voiture.couleur}} -
 					{{voiture.dateImmat}} -
 					{{voiture.plaque}}
 				</li>
