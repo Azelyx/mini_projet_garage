@@ -5,3 +5,11 @@
 .btn {
   float: right;
 }
+
+.listMarque li {
+  text-align: left;
+}
+.marque {
+  display: inline-block;
+  font-style: italic;
+}

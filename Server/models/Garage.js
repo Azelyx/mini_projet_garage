@@ -9,7 +9,7 @@ var Garage = {
 	},
 	getGarageById: function(id, callback) {
 		return db.query(
-			'select garage.idGarage,nomGarage,cpGarage,villeGarage,adresseGarage,telGarage,mailGarage,nbVoitureMax,COUNT(idVoiture) as nbVoiture FROM Garage, Voiture WHERE voiture.idGarage = garage.idGarage AND idGarage=? GROUP BY garage.idGarage',
+			'select garage.idGarage,nomGarage,cpGarage,villeGarage,adresseGarage,telGarage,mailGarage,nbVoitureMax,COUNT(idVoiture) as nbVoiture FROM Garage, Voiture WHERE voiture.idGarage = garage.idGarage AND garage.idGarage=? GROUP BY garage.idGarage',
 			[id],
 			callback
 		);

@@ -26,8 +26,8 @@
   </div>
   <div class="form-group">
     <label for="nbVoitureMax">Nombre de places</label>
-    <input min="0" max="10000" step="1" [(ngModel)]="garage.nbVoitureMax" type="number" class="form-control" name="nbVoitureMax"
-      id="nbVoitureMax" required>
+    <input min="{{garage.nbVoiture}}" max="10000" step="1" [(ngModel)]="garage.nbVoitureMax" type="number" class="form-control"
+      name="nbVoitureMax" id="nbVoitureMax" required>
   </div>
   <button type="submit" class="btn btn-success">Valider</button>
 </form>

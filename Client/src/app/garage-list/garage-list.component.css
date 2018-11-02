@@ -9,3 +9,7 @@
 .noGarage {
   background-color: rgb(243, 243, 243);
 }
+
+.right {
+  float: right;
+}

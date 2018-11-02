@@ -1,7 +1,8 @@
 <div class="listMarque">
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let marque of marques">
-      {{marque.nomMarque}} <button (click)="open(content,marque.idMarque);" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>
+      <div class="marque">{{marque.nomMarque}}</div> <button (click)="open(content,marque.idMarque);" class="btn btn-danger btn-sm"><i
+          class="fas fa-trash-alt"></i>
         Supprimer</button>
     </li>
     <li class="list-group-item">

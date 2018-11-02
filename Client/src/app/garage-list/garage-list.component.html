@@ -3,7 +3,10 @@
 <div class="listGarages">
   <ul class="list-group">
     <li class="list-group-item pointer" *ngFor="let garage of garages" routerLink="/garage/{{garage.idGarage}}">
-      <span class="badge badge-info">{{garage.nbVoiture}}</span> {{garage.nomGarage}}
+      {{garage.nomGarage}}
+      <span *ngIf="garage.nbVoiture < garage.nbVoitureMax" class="badge badge-success right">{{garage.nbVoiture}}/{{garage.nbVoitureMax}}</span>
+      <span *ngIf="garage.nbVoiture === garage.nbVoitureMax" class="badge badge-warning right">{{garage.nbVoiture}}/{{garage.nbVoitureMax}}</span>
+      <span *ngIf="garage.nbVoiture > garage.nbVoitureMax" class="badge badge-danger right">{{garage.nbVoiture}}/{{garage.nbVoitureMax}}</span>
     </li>
     <li class="list-group-item pointer noGarage" *ngIf="voitures" routerLink="/garage/noGarage">
       <span class="badge badge-secondary">{{voitures.length}}</span> Voiture(s) sans garage
