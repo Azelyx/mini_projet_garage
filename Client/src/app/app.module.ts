@@ -10,7 +10,6 @@ import { FormsModule } from '@angular/forms';
 import { VoitureEditComponent } from './voiture-edit/voiture-edit.component';
 import { AddGarageComponent } from './add-garage/add-garage.component';
 import { AddVoitureComponent } from './add-voiture/add-voiture.component';
-import { AddMarqueComponent } from './add-marque/add-marque.component';
 import { ShowMarqueComponent } from './show-marque/show-marque.component';
 import { GarageEditComponent } from './garage-edit/garage-edit.component';
 
@@ -24,7 +23,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     VoitureEditComponent,
     AddGarageComponent,
     AddVoitureComponent,
-    AddMarqueComponent,
     ShowMarqueComponent,
     GarageEditComponent,
   ],
