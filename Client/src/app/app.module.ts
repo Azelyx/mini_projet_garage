@@ -16,7 +16,6 @@ import { VoitureEditComponent } from './voiture-edit/voiture-edit.component';
     GarageListComponent,
     VoitureEditComponent,
   ],
-  imports: [BrowserModule, HttpModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

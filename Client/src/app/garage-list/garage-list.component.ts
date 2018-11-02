@@ -4,9 +4,7 @@ import { VoitureService } from '../services/voiture.service';
 import {MarqueService} from '../services/marque.service':
 import { Garage } from '../garage';
 import { Voiture } from '../voiture';
-import { from } from 'rxjs';
 import { Marque } from '../marque';
-
 
 @Component({
   selector: 'app-garage-list',
@@ -21,7 +19,6 @@ export class GarageListComponent implements OnInit {
   showAddGarage = false;
   garage = new Garage();
   showAddVoiture = false;
-  voiture = new Voiture();
 
   constructor(
     private garageService: GarageService,
@@ -38,12 +35,10 @@ export class GarageListComponent implements OnInit {
       this.garages = res.json();
     });
     this.voitureService.getAllwithoutGarage().subscribe(res => {
-      console.log(res.json());
       if (res.json().length >= 1) this.voitures = res.json();
     });
     this.marqueService.getAllMarques().subscribe(res => {
       this.marques = res.json();
-      console.log('marques', this.marques);
     });
   }
 
@@ -63,12 +58,3 @@ export class GarageListComponent implements OnInit {
     this.showAddGarage = false;
     this.showAddVoiture = !this.showAddVoiture;
   }
-  addVoiture() {
-    console.log('addVoiture');
-    if (!Number.isInteger(this.voiture.idGarage)) this.voiture.idGarage = null;
-    this.voitureService.createVoiture(this.voiture).subscribe(res => {
-      console.log(res.json());
-      this.ngOnInit();
-    });
-  }
-}
