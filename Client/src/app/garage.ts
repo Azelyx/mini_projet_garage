@@ -7,4 +7,5 @@ export class Garage {
   telGarage: number;
   mailGarage: string;
   nbVoitureMax: number;
+  nbVoiture: number;
 }
