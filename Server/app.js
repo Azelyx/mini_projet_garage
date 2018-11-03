@@ -12,8 +12,6 @@ var voitureRouter = require('./routes/voiture');
 var app = express();
 
 app.use(function(req, res, next) {
-	res.setHeader('Access-Control-Allow-Origin', 'http://89.156.148.2:8080');
-	res.setHeader('Access-Control-Allow-Origin', 'http://192.168.0.30:8080');
 	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
 
 	res.setHeader(
