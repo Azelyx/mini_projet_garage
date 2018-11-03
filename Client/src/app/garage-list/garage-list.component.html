@@ -16,7 +16,7 @@
 <div class="center">
   <button (click)="showAddGarageClick()" class="btn btn-success"><i class="fas fa-home"></i> Ajouter un garage</button>
   <button (click)="showAddVoitureClick()" class="btn btn-success"><i class="fa fa-car"></i> Ajouter une voiture</button>
-  <button (click)="showMarqueClick()" class="btn btn-success"><i class="fa fa-car"></i> Voir les marques</button>
+  <button (click)="showMarqueClick()" class="btn btn-success"><i class="fa fa-tag"></i> Voir les marques</button>
 
   <app-add-garage *ngIf="showAddGarage" (newGarage)="ngOnInit()"></app-add-garage>
   <app-add-voiture *ngIf="showAddVoiture" [data]="{marques: marques, garages: garages}" (newVoiture)="ngOnInit()"></app-add-voiture>

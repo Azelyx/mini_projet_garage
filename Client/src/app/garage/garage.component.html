@@ -5,21 +5,24 @@
 	sans garage</h1>
 <div class="row">
 	<div class="col-sm">
-		<div class="garageInfo" *ngIf="garage">
-			<div class="line">
-				<div class="lineInfo">Adress : </div>{{garage.adresseGarage}}, {{garage.cpGarage}}, {{garage.villeGarage}}
+		<div class="garage" *ngIf="garage">
+			<div class="garageInfo">
+				<div class="line">
+					<div class="lineInfo"><i class="fa fa-map-marker-alt"></i> Adress : </div>{{garage.adresseGarage}},
+					{{garage.cpGarage}}, {{garage.villeGarage}}
+				</div>
+				<div *ngIf="garage.telGarage" class="line">
+					<div class="lineInfo"><i class="fa fa-phone"></i> Télephone : </div>{{garage.telGarage}}
+				</div>
+				<div *ngIf="garage.mailGarage" class="line">
+					<div class="lineInfo"><i class="fa fa-envelope"></i> Mail : </div>{{garage.mailGarage}}
+				</div>
+				<div class="line">
+					<div class="lineInfo"><i class="fa fa-parking"></i> Nombre de places : </div>{{garage.nbVoitureMax}}
+				</div>
+				<button (click)="suppGarage()" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Supprimer le garage</button>
+				<button (click)="showEditGarageClick()" class="btn btn-warning"><i class="fas fa-pen"></i> Modifier le garage</button>
 			</div>
-			<div class="line">
-				<div class="lineInfo">Télephone : </div>{{garage.telGarage}}
-			</div>
-			<div class="line">
-				<div class="lineInfo">Mail : </div>{{garage.mailGarage}}
-			</div>
-			<div class="line">
-				<div class="lineInfo">Nombre de places : </div>{{garage.nbVoitureMax}}
-			</div>
-			<button (click)="suppGarage()" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Supprimer le garage</button>
-			<button (click)="showEditGarageClick()" class="btn btn-warning"><i class="fas fa-pen"></i> Modifier le garage</button>
 		</div>
 	</div>
 	<div class="col-sm">

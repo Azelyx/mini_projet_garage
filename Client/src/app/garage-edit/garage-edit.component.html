@@ -18,7 +18,7 @@
   </div>
   <div class="form-group">
     <label for="tel">Telephone</label>
-    <input [(ngModel)]="garage.telGarage" type="tel" class="form-control" name="tel" id="tel">
+    <input pattern="[0-9]{10}" [(ngModel)]="garage.telGarage" type="text" class="form-control" name="tel" id="tel">
   </div>
   <div class="form-group">
     <label for="Mail">Mail</label>
